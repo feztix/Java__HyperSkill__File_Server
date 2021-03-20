@@ -11,16 +11,16 @@ public class Advisor {
         while (!query[0].equals("exit")) {
             switch (query[0]) {
                 case "add":
-                    PrintService.print(Service.addFile());
+                    PrintService.print(Service.addFile(query[1]));
                     break;
                 case "get":
-                    //TODO - random number code generation goes here
+                    PrintService.print(Service.getFile(query[1]));
                     break;
                 case "delete":
                     //TODO - random number code generation goes here
                     break;
                 default:
-                    //                throw new NumberFormatException("Invalid random type");
+                    // throw new NumberFormatException("Invalid random type");
                     System.out.println("Cannot Execute The Query");
             }
             query = scanner.nextLine().split(" ");
