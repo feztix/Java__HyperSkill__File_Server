@@ -1,10 +1,11 @@
 package server;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Advisor {
 
-    public void start(){
+    public void start() {
         Scanner scanner = new Scanner(System.in);
         String[] query = scanner.nextLine().split(" ");
 
@@ -17,7 +18,7 @@ public class Advisor {
                     PrintService.print(Service.getFile(query[1]));
                     break;
                 case "delete":
-                    //TODO - random number code generation goes here
+                    PrintService.print(Service.delFile(query[1]));
                     break;
                 default:
                     // throw new NumberFormatException("Invalid random type");
