@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Executor {
+    final static String PATH = "/home/feztix/documents/coding/java/idea_projects/File_Server/File Server/task/src/server/";
 
     public static boolean checkValidName(String fileName){
         final String regex = "file(10|[1-9])";
@@ -30,17 +31,32 @@ public class Executor {
             return "Cannot add the file " + fileName;
         };
 
-        File file = new File("File Server/task/src/server/"+fileName);
+//        // создадим новый файл
+//        File file = new File(Executor.PATH + fileName);
+//        if (file.exists()){
+//            return  "The file " + fileName + " added successfully";
+//        }
+//        try
+//        {
+//            boolean created = file.createNewFile();
+//            if(created)
+//                return "Cannot add the file " + fileName;
+//        }
+//        catch(IOException ex){
+//
+//            return ex.getMessage();
+//        }
+
         try {
+            File file = new File(Executor.PATH + fileName);
             boolean createdNew = file.createNewFile();
             if (createdNew) {
                 return  "The file " + fileName + " added successfully";
             } else {
-                return "Cannot add the file 123" + fileName;
+                return "Cannot add the file " + fileName;
             }
         } catch (Exception e) {
-            return e.toString() + "999";
-//            return "Cannot add the file " + fileName;
+            return e.toString();
         }
     }
 
@@ -50,7 +66,7 @@ public class Executor {
      * @param fileName, name of the file we'll get
      */
     public static String getFile(String fileName){
-        File file = new File("File Server/task/src/server/"+fileName);
+        File file = new File(Executor.PATH + fileName);
 
         try (Scanner scanner = new Scanner(file)) { // it throws FileNotFoundException
             // ЧТЕНИЕ ФАЙЛА
@@ -64,7 +80,7 @@ public class Executor {
     }
 
     public static String delFile(String fileName){
-        File file = new File("File Server/task/src/server/"+fileName);
+        File file = new File(Executor.PATH + fileName);
 
         if (file.delete()) {
             return "The file " + fileName + " was deleted";
