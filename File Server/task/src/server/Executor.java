@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Executor {
-    final static String PATH = "/home/feztix/documents/coding/java/idea_projects/File_Server/File Server/task/src/server/";
+    final static String PATH = "/home/feztix/documents/coding/java/idea_projects/File_Server/File Server/task/src/server/files";
 
     public static boolean checkValidName(String fileName){
         final String regex = "file(10|[1-9])";
@@ -31,24 +31,9 @@ public class Executor {
             return "Cannot add the file " + fileName;
         };
 
-//        // создадим новый файл
-//        File file = new File(Executor.PATH + fileName);
-//        if (file.exists()){
-//            return  "The file " + fileName + " added successfully";
-//        }
-//        try
-//        {
-//            boolean created = file.createNewFile();
-//            if(created)
-//                return "Cannot add the file " + fileName;
-//        }
-//        catch(IOException ex){
-//
-//            return ex.getMessage();
-//        }
-
         try {
-            File file = new File(Executor.PATH + fileName);
+            System.out.println(System.getProperty("user.dir"));
+            File file = new File(Executor.PATH, fileName);
             boolean createdNew = file.createNewFile();
             if (createdNew) {
                 return  "The file " + fileName + " added successfully";
@@ -58,6 +43,7 @@ public class Executor {
         } catch (Exception e) {
             return e.toString();
         }
+
     }
 
     /**
